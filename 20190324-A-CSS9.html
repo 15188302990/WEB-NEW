@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【CSS-TASK9】如何使用 栅格系统</h3>
+
+                    <p style="text-align: center;">分享人：刘利铭</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是bootstrap？</p>
+                    <p>Bootstrap，来自 Twitter，是如今最流行的前端框架之一。是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。
+                    </p>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>bootstrap版本有哪些？区别</p>
+                    <p style="text-align: left">bootstrap4<br>
+                        1、它的源码是采用 Sass 语言编写的<br>
+                        2、使用flex的布局方式，全部使用了rem为单位（除了部分的margin和padding使用px）<br>
+                        3、 Bootstrap 4 共有5种栅格类， 依次是特小(col-)、小(col-sm-)、中(col-md-)、大(col-lg-)、特大(col-xl-)<br>
+                        4、偏移列通过 offset- 类来设置， 例如：.offset-md-4 是把.col-md-4 往右移了四列格。<br>
+
+                        bootstrap3<br>
+                        1使用float的布局方式<br>
+                        2共有4种栅格类，依次是特小(col-xs-)、小(col-sm-)、中(col-md-)、大(col-lg-)<br>
+                        3使用push和pull向左和向右移动<br>
+                    </p>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>流行的前端框架有哪些?</p>
+                    <p style="text-align: left">React、Vue、Angular。<br>
+                        React、Vue、jQuery严格来说只能算是库（Library），可以用他们来画界面，但它们并不要求你的结构应该怎样，你的代码结构有很大的自由度。<br>
+                        Angular 不是Library，而是一种框架（Framework），用了Angular，你的代码结构就必须安装Angular的思维走。<br>
+                        Bootstrap，算是一种扩展规则，按照它的规则走，能省些事，但是它还不至于规定你的程序结构。
+                    </p>
+                </section>
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是栅格系统？</p>
+                    <p>Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>使用原理</p>
+                    <p>网格系统的实现原理非常简单，仅仅是通过定义容器大小，平分12份，再调整内外边距，最后结合媒体查询，就制作出了强大的响应式网格系统。</p>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p>使用规则</p>
+                    <p style="text-align: left">1.行(.row)必须包含在容器（.container）中，以便为其赋予合适的对齐方式和内距(padding)。 <br>
+                        2.行(.row)是列(.col-*)的横向组合和父容器<br>
+                        3.呈现内容必须放置在列(.col-*中，而且只有列可以是行的直接子元素<br>
+                        4.col-*后面有不同的数字，如.col-sm-4或.col-xl-12，这些css类后面的数字用于表明定义div空间想要占用列的数量，每行最多有12列。<br>
+                        5.col-*的width属性(即列宽)是用百分比来表现和定义的，所以它们总是流式的<br>
+                        6五个栅格等级，每个响应式分界点隔出一个等级：特小.col、小.col-sm-*、中.col-md-*、大.col-lg-*、特大（大、特大也可以称为宽、超宽）.col-xl-*。<br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">1.就是没有引入、没有引入正确、没有下载bootstrap.min.css！！！<br>
+                        2.如何设置5列占满宽度？<br>
+                        3.Bootstrap栅格布局的响应式如何实现？
+                        4.遇到浮动的问题要怎么办
+                    </p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">1使用 Bootstrap CDN嵌入4行代码就能完成导入！1行css 3行js.<br>
+                        2、每列设置宽度20%,也就是100%除以列数。<br>
+                        3、利用列重置，列偏移。 在通过给col附加不同的class前缀，以此对应不同的屏幕下，内容的宽度。
+                        4.Bootstrap4自带了清楚浮动的效果
+                    </p>
+
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>首先，有continue和row，并且内容放在row里</h3>
+                    <img src="img/20190324-A-CSS9/19.3.24.A.CSS.9-1.jpg">
+                    这是我们发现内容独占一行，是因为col-xs-12，12即宽度为100%。
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                <img src="img/20190324-A-CSS9/19.3.24.A.CSS.9-2.jpg">
+                这时我们发现内容独占50%，是因为col-md-6，6即宽度为50%。
+            </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <img src="img/20190324-A-CSS9/19.3.24.A.CSS.9-3.jpg">
+                    这时我们发现内容独占25%，是因为col-lg-3，3即宽度为25%。
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <p>1.什么是移动设备优先</p>
+                    <p>2.为什么是12列？</p>
+                    <p>3.bootstrap有哪些常用的组件</p>
+                    <p>4.什么是组件</p>
+                    <p>5.Bootstrap 有哪些缺点</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p>
+                        1.博客<br>
+                        2.b站视频<br>
+                        3.bootstrap中文网</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【css-TASK9】如何使用 栅格系统？
+
+                    分享人：刘利铭
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body></html>
