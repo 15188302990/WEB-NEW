@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【JS-TASK4】简述JS中this的指向</h3>
+
+                    <p style="text-align: center;">分享人：刘利铭</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>JS中THIS指的是什么？</p>
+                    <p style="text-align: left">
+                        &emsp;&emsp;this是JavaScript语言中定义的众多关键字之一，它的特殊在于它自动定义于每一个函数域内，<span style="color: black">在函数运行时，this会自动生成一个内部对象，这个对象只能在函数内部使用</span> 。同时，随着函数使用场合的不同，this的值会发生变化。<br>
+                        &emsp;&emsp;但是有一个总的原则，那就是this指的是，调用函数的那个对象。<br>
+                        &emsp;&emsp;它是一个很特别的关键字，被自动定义在所有函数的作用域中 <br>
+                        &emsp;&emsp;在JavaScript中，this是动态绑定的，它可以是全局对象、当前对象或者任意对象，这完全取决于函数的调用方式。 这就导致了this具备了多重含义，可以使得JavaScript更灵活的使用。
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>方法中的 this</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        在对象方法中， this 指向调用它所在方法的对象。<br>
+                        // // 创建一个对象<br>
+                         var person = {//person是对象（对象是属性和方法的容器。）<br>
+                        &emsp;&emsp;firstName: "John",<br>
+                        &emsp;&emsp;lastName : "Doe",<br>
+                        &emsp;&emsp;id     : 5566,<br>
+                        &emsp;&emsp;fullName : function() {<br>
+                        &emsp;&emsp;&emsp;&emsp;return this.firstName + " " + this.lastName;<br>
+                        &emsp;&emsp;}<br>
+                    //显示对象的数据<br>
+                   document.getElementById("demo").innerHTML = person.fullName();<br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>单独使用 this</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                     单独使用 this，则它指向全局(Global)对象。 <br>
+                     在浏览器中，window 就是该全局对象为 [object Window] <br>
+                        var x = this; <br>
+                        document.getElementById("demo").innerHTML = x; <br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>函数中使用 this（默认）</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                       函数使用中，this 指向函数的所属者。 <br>
+                     在函数中，函数的所属者默认绑定到 this 上。 <br>
+                    在浏览器中，window 就是该全局对象为 [object Window]: <br>
+                         function myFunction() { <br>
+                        &emsp;&emsp;return this; <br>
+                        } <br>
+                        document.getElementById("demo").innerHTML = myFunction();
+                       </p>
+                </section>
+
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>函数中使用 this（严格模式）</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        函数中，默认情况下，this 指向全局对象。<br>
+                        严格模式下,下不允许默认绑定:<br>
+                        严格模式下函数是没有绑定到 this 上，这时候 this 是 undefined。<br>
+                        "use strict";<br>
+                        function myFunction() {<br>
+                        &emsp;&emsp;return this;<br>
+                        }<br>
+                        document.getElementById("demo").innerHTML = myFunction();<br>
+                        </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>什么是严格模式？</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        在严格模式下的写法：”use strict”。这里写在js最上面的。在严格模式下，所有的代码规范必须严谨，不然会出现爆红，
+                        在严格模式下的全局环境中执行函数调用的时候，this并不会指向window而是会指向undefined。
+                        如果不用严格模式，可能会不知不觉定义几个全局变量。<br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>事件中的 this</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        在 HTML 事件句柄中，this 指向了接收事件的 HTML 元素 <br>
+                        《button onclick="this.style.display='none'">点我就消失《/button>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>apply 和 call 就是函数对象的方法。</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。<br>
+                        call<br>
+                        var person1 = {<br>
+                        &emsp;&emsp;fullName: function() {<br>
+                        &emsp;&emsp; &emsp;&emsp;return this.firstName + " " + this.lastName;<br>
+                        &emsp;&emsp; }<br>
+                        }<br>
+                        var person2 = {<br>
+                        &emsp;&emsp;  firstName:"John",<br>
+                        &emsp;&emsp;  lastName: "Doe",<br>
+                        }<br>
+                        var x = person1.fullName.call(person2);<br>
+                        document.getElementById("demo").innerHTML = x;<br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>apply和call有什么区别</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        它们各自的定义：<br>
+
+                        apply：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments); 即 A 对象应用 B 对象的方法。<br>
+
+                        call：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2); 即 A 对象调用 B 对象的方法。<br>
+
+                        它们的共同之处：<br>
+
+                        都 “可以用来代替另一个对象调用一个方法，将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象”。<br>
+
+                        它们的不同之处：<br>
+
+                        apply：最多只能有两个参数——新 this 对象和一个数组 argArray。如果给该方法传递多个参数，则把参数都写进这个数组里面，当然，即使只有一个参数，也要写进数组里。如果 argArray 不是一个有效的数组或 arguments 对象，那么将导致一个 TypeError。如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj，并且无法被传递任何参数。<br>
+
+                        call：它可以接受多个参数，第一个参数与 apply 一样，后面则是一串参数列表。这个方法主要用在 js 对象各方法相互调用的时候，使当前 this 实例指针保持一致，或者在特殊情况下需要改变 this 指针。如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。<br>
+
+                        实际上，apply 和 call 的功能是一样的，只是传入的参数列表形式不同。<br>
+                    </p>
+                </section>
+
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                    <p>  综上所述，已经和大家展示过，这里就不多说</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>为什么 this 在JS 中的含义如此丰富？</h3>
+                    <p style="text-align: left;font-size: 30px">JavaScript 中的函数既可以被当作普通函数执行，也可以作为对象的方法执行，这是导致 this 含义如此丰富的主要原因。
+
+                        一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，
+
+                        构建该执行环境时，JavaScript 首先会创建 arguments变量，其中包含调用函数时传入的参数。接下来创建作用域链。然后初始化变量，
+
+                        首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。
+
+                        如果该函数中含有内部函数，则初始化这些内部函数。如果没有，继续初始化该函数内定义的局部变量，
+
+                        需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，
+
+                        这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。最后为 this变量赋值，
+
+                        如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。至此函数的执行环境（ExecutionContext）创建成功，
+
+                        函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。</p>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>setTimeout、setInterval中的this是指向哪里？</h3>
+                    <p>超时调用的代码都是在全局执行域中执行的”。setTimeout/setInterval 执行的时候，this 默认指向 window 对象，除非手动改变 this 的指向。</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>如何改变this的指向？</h3>
+                    <p style="text-align: left;">可以使用call或者apply的方法改变指向 <br>
+                        如果xxxx.call(a)，this就指向a；当a为null或者undefined的时候，会指向window；  <br>
+                        假如说要传参，构造函数名.call("a","b",“c”)，它的第一个参数传到的是this； <br>
+                        apply类似，但是与之不同的是，要书写成： 构造函数名.apply("a",["b"，"c"])的形式，这就是差别；</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>箭头函数中this指向</h3>
+                    <p style="text-align: left;">
+                        箭头函数中的this是在定义函数的时候绑定，而不是在执行函数的时候绑定。  <br>
+                        所谓的定义时候绑定，就是this是继承自父执行上下文！！中的this 。  <br>
+                        箭头函数中，this指向的固定化，并不是因为箭头函数内部有绑定this的 机制，  <br>
+                        实际原因是箭头函数根本没有自己的this，导致内部的this就是外 层代码块的this。正是因为它没有this，所以也就不能用作构造函数。</p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>内联元素的this？</h3>
+                    <p style="text-align: left;">
+                        内联元素中的this指向了它所在的dom对象，没有设置内部函数的this，所以它指向 global/window 对象</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left">
+                       菜鸟教程<br>
+
+                    </p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【JS-TASK4】简述JS中this的指向
+
+                    分享人：刘利铭
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body></html>
