@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+
+        p.font {
+            text-align: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+            'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+<img src="img/2018-11-16-A-css01/logo.png" alt="" usemap="#pttmap" class="base-logo" style="visibility: hidden">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+            <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.794571);">
+                <section class="present" style="top: 234px; display: block;">
+                    <h3>【JS-TASK4】 简述JS中的面向对象编程</h3>
+
+                    <p style="text-align: center;">分享人：刘利铭</p>
+
+                </section>
+                <section class="future" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+                    <p>目录</p>
+                    <p>1. 背景介绍</p>
+                    <p>2. 知识剖析</p>
+                    <p>3. 常见问题</p>
+                    <p>4. 解决方案</p>
+                    <p>5. 编码实战</p>
+                    <p>6. 扩展思考</p>
+                    <p>7. 参考文献</p>
+                    <p>8. 更多讨论</p>
+                </section>
+                <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                    <h3>一、背景介绍</h3>
+                </section>
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>对象，面向对象，类，封装，构造函数，原型链</p>
+                </section>
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>js的对象的定义</p>
+                    <p style="text-align: left">
+                        js对象：拥有属性和方法的数据（菜鸟教程）</br></br>
+                        &emsp;&emsp;&emsp;：“无需属性的集合，其属性可以包含基本值、对象或者函数。”（红宝书）
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3> 创建单个对象</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        方法：①创建一个Object的实例，即Object构造函数</br>
+                        &emsp;&emsp;&emsp;②对象字面量表示法
+                    <pre>
+                    Object构造函数
+                    var Cat = new Object();
+                    Cat.name = "大毛";
+                    Cat.age = 29;
+                    Cat.doing = function () {}
+                    console.log(Cat);
+
+                    对象字面量表示法
+                    var Cat = {
+                        name : "大毛",
+                        age : 29,
+                        doing : function () {},
+                    };
+                    console.log(Cat);
+                    </pre>
+                    缺点：创建很多对象时，会产生大量的重复代码。
+                    </p>
+                </section>
+
+
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是面向对象？</p>
+                    <p style="text-align: left">
+                        简称：OO(Object-Oriented;</br></br>
+                        两个基本概念：</br>
+                        &emsp;&emsp;类：类是对象的类型模板；</br>
+                        &emsp;&emsp;实例：实例是根据类创建的对象；</br></br>
+                        一个标志：他们都有类的概念，通过类来创建任意多以相同属性和方法的对象</br></br>
+                        但是我们js，没有类的概念。JS不区分类和实例的概念，而是通过原型（prototype）来实现面向对象编程。</p>
+                </section>
+
+
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>js的类</p>
+                    <p style="text-align: left">
+                        JS的类其实是一个函数function，由于不是典型的OOP的类，因此也叫伪类。
+                        理解JS的类，需要对JS里的function有一个比较好的认识。
+                        首先，function本身就是一个object，跟普通的object无异。
+                        然后function可以当作一个类</p>
+
+                </section>
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>https://www.cnblogs.com/yincheng/p/4943789.html</p>
+                    <p>Java/C++的面向对象是object - class的关系，而JS是object - object的关系，中间通过原型prototype连接，父类和子类形成一条原型链。</p>
+                 </section>
+
+
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>二、知识剖析</h3>
+                </section>
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3>创建多个对象</h3>
+                </section>
+
+
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3> 创建多个对象--工厂模式</h3>
+                    <p>什么是工厂模式？</p>
+                    <p style="text-align: left">
+                        工厂模式是软件工厂领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。</br>
+                        在考虑到js无法创建类，开发人员就发明了一种函数，用函数来封装一特定接口创建对象的细节。</br></br>
+                    </p>
+                </section>
+
+                <section class="future" style="top: 190px; display: none;" hidden="" aria-hidden="true">
+                    <p>什么是封装</p>
+                    <p>封装，即隐藏对象的属性和实现细节，仅对外公开接口，控制在程序中属性的读和修改的访问级别；将抽象得到的数据和行为（或功能）相结合，形成一个有机的整体，也就是将数据与操作数据的源代码进行有机的结合，形成“类”，其中数据和函数都是类的成员。</p>
+                    <p>在面向对象编程中，封装（encapsulation）是将对象运行所需的资源封装在程序对象中——基本上，是方法和数据。对象是“公布其接口”，对象接口包括了公共的方法和初始化数据。这个概念就是“不要告诉我你是怎么做的，只要做就可以了。”</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+function creatStudent(name,age){
+    var o = new Object();
+    o.name = "name";
+    o.age = age;
+    o.equip = ["铅笔","橡皮","尺规"]
+    o.doing = function(){
+        alter("去考试")
+    };
+    return o;
+}
+
+var student1 = creatStudent("崔浩然",16);
+var student2 = creatStudent("冯思伟",18);
+console.log(student1);
+console.log(student2);
+                    </pre>
+                    <p style="text-align: left">
+                        解决：创建多个相似对象的问题；</br>
+                        缺点：没有解决对象识别的问题（即怎么知道一个对象的类型）
+                    </p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+var creatStudent = function(name,age){
+    var o = new Object();
+    o.name = "name";
+    o.age = age;
+    o.equip = ["铅笔","橡皮","尺规"];
+    o.doing = function(){
+        alter("去考试")
+    };
+    return o;
+};
+
+var student1 = creatStudent("崔浩然",16);
+var student2 = creatStudent("冯思伟",18);
+console.log(student1);
+console.log(student2);
+console.log(student1.constructor == creatStudent);
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3> 创建多个对象--构造函数模式</h3>
+                    <p>构造函数可用来创建特定类型的对象。像Object,Array这样原生构造函数，在运行时会自动出现在执行环境中。也可以自定义的构造函数，从而自定义对象类型的属性的方法。</p>
+
+
+                </section>
+
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    this.equip = ["铅笔","橡皮","尺规"];
+    this.doing = function(){
+        alter("去考试");
+    }
+}
+//创建新的实例，必须使用new操作符。
+var student1 = new Student("崔浩然",16);//实例
+var student2 = new Student("冯思伟",18);//实例
+console.log(student1.constructor == Student);//constructor最初是用来标识对象的类型，返回对创建此对象的数组函数的引用
+console.log(student1.constructor == Object);
+console.log(student1 instanceof Student);//检测对象类型：instanceof操作符
+console.log(student1 instanceof Object);
+【这里，student1不仅是Student的实例，也是Object的实例。这个稍后在提】
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <p style="text-align: left;font-size: 30px">
+                        与工厂模式的区别：没有显式地创建对象；直接将属性和方法赋给this对象；没有return语句。</br>
+                        惯例：构造函数应该以大写字母开头，而非构造函数以小写字母开头。</br>
+                        过程：①创建一个新的对象；</br>
+                        &emsp;&emsp; &emsp;②将构造函数的作用域赋给新对象(因此this就指向了这个新对象)</br>
+                        &emsp;&emsp; &emsp;③执行构造函数中的代码（为这个新对象添加属性）</br>
+                        &emsp;&emsp; &emsp;④返回新对象。</br>
+                        总结：构造函数本身也是函数，只不过可以来创建对象而已。</br>
+                        解决：构造函数可以将它的实例标识为一种的特定的类型</br>
+                        缺点：每个方法都要在每个实例上演示一遍。或者说每个实例上都有一个相似的方法，占用资源。
+                    </p>
+                </section>
+
+
+
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>另一种书写
+function Student(name,age){
+    this.name = "name";
+    this.age = age;
+    this.equip = ["铅笔","橡皮","尺规"];
+    this.doing = function(){
+
+        alter("去考试");
+    }
+}
+
+var Student = function(name,age){
+    this.name = "name";
+    this.age = age;
+    this.equip = ["铅笔","橡皮","尺规"];
+    this.doing = function(){
+        alter("去考试");
+    }
+}
+                    </pre>
+                </section>
+
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3> 构造函数与其他函数的区别</h3>
+                    <p>其实区别只有一个：在与调用方式不一样。任何函数，只要通过new 操作符来调用，那它就可以作为构造函数，如果不，则和普通函数不会有什么两样。</p>
+                    <p>不用new时，Student("老王",88);console.log(window);</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>解决构造函数，每个方法都要在每个实例上演示一遍。将这个方法拿出来，放到构造函数的外面。
+function Student(name,age){
+    this.name = "name";
+    this.age = age;
+    this.equip = ["铅笔","橡皮","尺规"];
+    this.doing = doing;
+}
+function doing(){
+    alter("去考试");
+}
+var student1 = new Student("崔浩然",16);
+var student2 = new Student("冯思伟",18);
+console.log(student1);
+console.log(student2);
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <h3> 创建多个对象--原型模式</h3>
+                    <p>JS里的每一个function都有一个prototype（原型）属性，这个属性是一个指针，指向一个对象，而这个对象的用途就是包含可以由特定类型的所有实例共享的属性和方法。</p>
+                    <p style="text-align: left">
+                        简单来说，假设每一个账号是一个函数，则账号上的不用角色就是账号的实例。</br>
+                        但是账号（函数）上有一个"账号共享金库（prototype）"，金库（prototype）里面的东西，可以被每个角色（实例）来使用。</br>
+                        我们将共享的属性和方法，可以放到这个金库（prototype）里面。
+                    </p>
+                    <p>https://www.cnblogs.com/yincheng/p/4943789.html</p>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+}
+Student.prototype.equip = ["铅笔","橡皮","尺规"];
+Student.prototype.doing = function(){
+        alter("去考试");
+    }
+var student1 = new Student("崔浩然",16);//实例
+var student2 = new Student("冯思伟",18);//实例
+console.log(student1);
+console.log(student2);
+console.log(student2.equip);//只有在调有时才去触发
+console.log(student2.doing);
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    Student.prototype.equip = ["铅笔","橡皮","尺规"];
+    Student.prototype.doing = function(){
+        alter("去考试");
+    }
+}
+
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+}
+Student.prototype = {
+    equip : ["铅笔","橡皮","尺规"],
+    doing : function(){
+    alter("去考试");
+    }
+}
+
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 188px; display: none;" hidden="" aria-hidden="true">
+
+                    <p>虽然可以通过对象实例访问保存在原型的值，但却不能通过对象实例重写原型中的值</p>
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+}
+Student.prototype.equip = ["铅笔","橡皮","尺规"];
+Student.prototype.doing = function(){
+        alter("去考试");
+    }
+
+var student1 = new Student("崔浩然",16);//实例
+var student2 = new Student("冯思伟",18);//实例
+student1.equip = ["钢笔"]
+console.log(student1);
+console.log(student2);
+console.log(student2.equip);//只有在调有时才去触发
+console.log(student2.doing);
+                    </pre>
+                </section>
+
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>三、常见问题</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>继承</h3>
+                    <p style="text-align: left;font-size: 30px;text-transform:none;">
+                        prototype模式 <br>
+                        寄生式继承 <br>
+                        寄生组合是继承
+                    </p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>四、解决办法</h3>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>prototype模式</h3>
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    Student.prototype = {
+       equip : ["铅笔","橡皮","尺规"],
+       doing : function(){
+         alter("去考试");
+        }
+    }
+}
+
+function Sex(){
+   this.sex = "girl"
+}
+//继承Sex，给与构造函数的实例
+Student.prototype = new Sex();
+
+var student1 = new Student("老崔",16);//实例
+console.log(student1);
+console.log(student1.sex);
+                    </pre>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>直接继承prototype模式</h3>
+                    <p style="text-align: left">这是对第一种的改进，这样做优点是效率比较高，不同执行和建立实例，比较省内存</p>
+                    <p style="text-align: left">缺点：Student.prototype和Sex.prototype都指向一个对象，那么任何对Student.prototype的修改都会放映到Sex.prototype</p>
+                        <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    Student.prototype = {
+       equip : ["铅笔","橡皮","尺规"],
+       doing : function(){
+         alter("去考试");
+        }
+    }
+}
+
+function Sex(){}
+Sex.prototype.sex="girl";
+//继承
+Student.prototype = Sex.prototype;
+
+var student1 = new Student("老崔",16);//实例
+console.log(student1);
+console.log(student1.sex);
+                    </pre>
+                    <pre>Student.prototype.sex="body";console.log(Sex.prototype);</pre>
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>利用空对象作为中介</h3>
+                    <p style="text-align: left">F为空对象，不占内存</p>
+                    <p style="text-align: left">对Student.prototype的修改也不会放映到Sex.prototype</p>
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    Student.prototype = {
+       equip : ["铅笔","橡皮","尺规"],
+       doing : function(){
+         alter("去考试");
+        }
+    }
+}
+
+function Sex(){}
+Sex.prototype.sex="girl";
+var F = function(){};
+F.prototype = Sex.prototype
+
+
+
+//继承，给与构造函数的实例
+Student.prototype = new F();
+
+var student1 = new Student("老崔",16);//实例
+console.log(student1);
+console.log(student1.sex);
+                    </pre>
+
+                </section>
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <pre>
+function Student(name,age){//Student类
+    this.name = "name";
+    this.age = age;
+    Student.prototype = {
+       equip : ["铅笔","橡皮","尺规"],
+       doing : function(){
+         alter("去考试");
+        }
+    }
+}
+
+function Sex(){}
+Sex.prototype.sex="girl";
+//封装为一个函数
+function XXX(who,sex){
+   var F = function(){};
+   F.prototype = sex.prototype
+   //继承，给与构造函数的实例
+   who.prototype = new F();
+}
+XXX(Student,Sex);
+var student1 = new Student("老崔",16);//实例
+console.log(student1);
+console.log(student1.sex);
+                    </pre>
+
+                </section>
+
+
+
+
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>五、编码实战</h3>
+                    <p>  综上所述，已经和大家展示过，这里就不多说</p>
+                </section>
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>六、拓展思考</h3>
+                </section>
+
+                <section class="future" style="top: 97.5px; display: none;" hidden="" aria-hidden="true">
+                <h3>其他继承方式</h3>
+                    <p style="text-align: left;font-size: 30px">
+                        prototype模式 <br>
+                        寄生式继承 <br>
+                        寄生组合是继承
+                    </p>
+                </section>
+
+
+
+
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>七、参考文献</h3>
+                </section>
+
+                <section class="future" style="top: 178px; display: none;" hidden="" aria-hidden="true">
+                    <p>博客<br>
+                    <p>1.JavaScript高级程序设计</p>
+
+
+                    </p>
+                </section>
+                <section class="future" style="top: 267px; display: none;" hidden="" aria-hidden="true">
+                    <h3>八、更多讨论</h3>
+                </section>
+
+                <section class="future" style="top: 202.5px; display: none;" hidden="" aria-hidden="true">
+                    <h3>感谢观看</h3>
+                </section>
+            </div>
+        <div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 0px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    【JS-TASK4】return的用法是什么？若用在for循环中，还会执行下一次循环吗？
+
+                    分享人：刘利铭
+                </div></div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                dependencies: [{
+                    src: 'https://ptteng.github.io/PPT/plugin/markdown/marked.js'
+                },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'https://ptteng.github.io/PPT/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    
+    </body></html>
